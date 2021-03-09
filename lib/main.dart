@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 import 'package:personal_expenses/transaction.dart';
 
 void main() {
@@ -32,6 +34,9 @@ class MyHomePage extends StatelessWidget {
     ),
   ];
 
+  final descController = TextEditingController();
+  final amountController = TextEditingController(text: '0');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +50,35 @@ class MyHomePage extends StatelessWidget {
             child: Card(
               child: Text('Chart here'),
               elevation: 5,
+            ),
+          ),
+          Card(
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Description'),
+                    controller: descController,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Amount',
+                    ),
+                    controller: amountController,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      print(descController.text);
+                      print(amountController.text);
+                    },
+                    child: Text('Add Transaction'),
+                    style: TextButton.styleFrom(primary: Colors.purple),
+                  ),
+                ],
+              ),
             ),
           ),
           Column(
@@ -63,14 +97,14 @@ class MyHomePage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  tx.amount.toString() + ' Php',
+                                  '${tx.amount} Php',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 24,
                                       color: Colors.purple),
                                 ),
                                 Text(
-                                  tx.date.toIso8601String(),
+                                  DateFormat.yMMMMEEEEd().format(tx.date),
                                   style: TextStyle(
                                       fontSize: 14, color: Colors.grey),
                                 ),
