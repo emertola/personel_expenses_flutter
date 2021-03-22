@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-          primaryColor: Colors.purple,
+          primarySwatch: Colors.purple,
+          // primaryColor: Colors.purple,
           accentColor: Colors.amber,
           fontFamily: 'Quicksand',
           textTheme: ThemeData.light().textTheme.copyWith(
@@ -44,18 +45,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-      id: '1',
-      title: 'My Groceries',
-      amount: 1980.50,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: '2',
-      title: 'Haircut',
-      amount: 150,
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id: '1',
+    //   title: 'My Groceries',
+    //   amount: 1980.50,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: '2',
+    //   title: 'Haircut',
+    //   amount: 150,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   void _addNewTransaction(String txDesc, double txAmount) {
